@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Demo</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+</head>
+<body>
+    <input type="checkbox" class="all" id="all">
+    <div>
+        <input type="checkbox" class="goods" id="x1">
+        <input type="checkbox" class="goods" id="x2">
+    </div>
+    <input type="checkbox" class="all" id="all2">
+    <script>
+        // check();
+        $('.all').click(function() {
+            if($(this).is(":checked")){
+                // 选中
+                $('.all').prop("checked", true);
+                $('.goods').prop("checked", true);
+            } else {
+                // 取消选中
+                $('.all').prop("checked", false);
+                $('.goods').prop("checked", false);
+            }
+        })
+
+        $('.goods').click(function() {
+            if($(this).is(":checked")){
+                $(this).prop("checked", true);
+            } else {
+                $(this).prop("checked", false);
+            }
+            check();
+        })
+        function check() {
+            var off = true;
+            for (i=0; i<$('.goods').length;i++){
+                if(!$('.goods').eq(i).is(":checked")) {
+                    off = false
+                }
+            }
+            console.log(off)
+            if (off) {
+                $('.all').prop("checked", true);
+            } else {
+                $('.all').prop("checked", false);
+            }
+        }
+    </script>
+</body>
+</html>
